@@ -30,18 +30,10 @@ jobs:
         if: runner.os == 'macOS'
         run: brew install gcc
 
-      - name: Install cibuildwheel
-        run: pip install cibuildwheel
-
       - name: Build wheels
-        run: cibuildwheel --output-dir wheelhouse
-        env:
-          CIBW_BEFORE_BUILD: "pip install cython setuptools wheel"
-          # Call your custom build step before packaging
-          CIBW_BEFORE_ALL: "pip install cython && cd python/source && python setup.py build_ext --build-lib=../lib"
-
-          # Limit to CPython only (skip PyPy, etc.)
-          CIBW_SKIP: "pp*"
+        uses: pypa/cibuildwheel@v3.1.4
+        env: 
+          output-dir: wheelhouse
 
       - name: Upload wheels as artifact
         uses: actions/upload-artifact@v4
