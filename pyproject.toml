@@ -30,4 +30,4 @@ build-backend = "poetry.core.masonry.api"
 
 
 [tool.cibuildwheel]
-before-all = "pip install cython setuptools && cd python/source && python setup.py build_ext --build-lib=../lib && tree -L 3"
+before-all = "pip install cython setuptools && cd python/source && python setup.py build_ext --build-lib=../lib && apt install tree && tree -L 3"
