@@ -13,7 +13,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
+        os: [ubuntu-latest]
 
     steps:
       - name: Checkout repository
@@ -38,7 +38,7 @@ jobs:
         env:
           CIBW_BEFORE_BUILD: "pip install cython setuptools wheel"
           # Call your custom build step before packaging
-          CIBW_BEFORE_ALL: "cd python && cd source && python setup.py build_ext --build-lib=../src/zpic"
+          CIBW_BEFORE_ALL: "pip install cython && cd python/source && python setup.py build_ext --build-lib=../lib"
 
           # Limit to CPython only (skip PyPy, etc.)
           CIBW_SKIP: "pp*"
