@@ -33,6 +33,7 @@ zpic
 
 # . (dot) files that various editors leak out
 .*
+!/.github
 !/.gitignore
 
 # ignore test directories

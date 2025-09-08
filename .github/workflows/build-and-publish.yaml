@@ -22,24 +22,22 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.11" # cibuildwheel will handle multiple Pythons internally
+          python-version: "3.11"
 
-      # cibuildwheel automatically installs compilers in its Docker containers,
-      # so you only need build tools for macOS/Windows runners
-      - name: Install build tools (macOS only)
-        if: runner.os == 'macOS'
-        run: brew install gcc
+      - name: Install Poetry
+        run: "pip install poetry"
 
-      - name: Build wheels
-        uses: pypa/cibuildwheel@v3.1.4
-        env: 
-          output-dir: wheelhouse
+      - name: Install dependencies with Poetry
+        run: "poetry install"
+
+      - name: Build wheel with Poetry
+        run: "poetry build"
 
       - name: Upload wheels as artifact
         uses: actions/upload-artifact@v4
         with:
           name: built-wheels
-          path: wheelhouse/*.whl
+          path: dist/*.whl
 
   publish:
     name: Publish to PyPI
