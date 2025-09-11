@@ -5,7 +5,7 @@ from Cython.Build import cythonize
 import sysconfig
 from setuptools.command.build_ext import build_ext
 
-cflags = sysconfig.get_config_var('CFLAGS')
+cflags = sysconfig.get_config_var('CFLAGS') or ""
 cflags = cflags.replace(' -g', '')
 cflags = cflags.replace('-O3', '-Ofast')
 cflags += ' -std=c99 -fPIC'
@@ -13,7 +13,7 @@ cflags += ' -std=c99 -fPIC'
 # Removes unrecognized gcc option if present
 cflags = cflags.replace(' -fexceptionsrecord-gcc-switches', '')
 
-cc = sysconfig.get_config_var('CC')
+cc = sysconfig.get_config_var('CC') or ""
 
 class custom_build_ext(build_ext):
 	def build_extensions(self):
