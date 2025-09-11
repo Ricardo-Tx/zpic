@@ -1,10 +1,17 @@
 from subprocess import run
 from distutils.dir_util import copy_tree
+from os import name
 
+PYTHON = 'python3'
+ARGS = "--build-lib=\"../lib\""
+
+if name == 'nt':
+    PYTHON = 'python'
+    ARGS += " --compiler=mingw32"
 
 # run the original python compilation program
-run("cd python/source && python3 setup.py build_ext --build-lib=\"../lib\"", shell=True)
-run("cd contrib/python/source && python3 setup.py build_ext --build-lib=\"../lib\"", shell=True)
+run(f"cd python/source && {PYTHON} setup.py build_ext {ARGS}", shell=True)
+run(f"cd contrib/python/source && {PYTHON} setup.py build_ext {ARGS}", shell=True)
 
 # Copy contents of python/lib/ after compilation.
 # We could change the python/source/Makefile BUILD_LIB library but we'd rather not 
