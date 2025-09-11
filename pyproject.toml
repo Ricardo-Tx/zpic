@@ -1,6 +1,6 @@
 [project]
 name = "zpic"
-version = "0.1.1"
+version = "0.1.2"
 description = "A fork of the https://github.com/zpic-plasma/zpic project which attempts to integrate the python functionality as a standalone pip package for convenience"
 authors = [
     {name = "Ricardo Teixeira", email = "ricardo.a.teixeira@tecnico.ulisboa.pt"},
