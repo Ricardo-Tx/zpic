@@ -41,12 +41,8 @@ test*/
 
 # Ignore Python and Cython leftovers
 __pycache__/
-/python/source/em1d.c
-/python/source/em1ds.c
-/python/source/em2d.c
-/python/source/em2ds.c
-/python/source/es1d.c
-/python/source/em2d_rr.c
+python/source/*.c
+contrib/python/source/*.c
 
 /zpic.code-workspace
 

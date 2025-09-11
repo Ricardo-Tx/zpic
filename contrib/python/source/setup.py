@@ -36,7 +36,7 @@ em2d_rr = Extension("em2d_rr",
 )
 
 # Compile extensions
-setup(name="zpic,
+setup(name="zpic",
     ext_modules = cythonize([em2d_rr]), 
 	zip_safe=False,
     cmdclass={"build_ext": custom_build_ext}

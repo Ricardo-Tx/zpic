@@ -1,4 +1,4 @@
-# this script loads the compiled binaries into the module namespace dynamically
+# this script loads the contrib compiled binaries into the module namespace dynamically
 
 from pathlib import Path
 from sys import path
@@ -8,7 +8,7 @@ path.append(str(lib_dir))
 
 modules = []
 
-# default plugins
+# contrib plugins
 for bin in lib_dir.iterdir():
     name = bin.name.split('.')[0]
     if name.startswith('__'):
@@ -18,4 +18,3 @@ for bin in lib_dir.iterdir():
         modules.append(name)
     except ImportError:
         globals()[name] = None
-    
