@@ -21,9 +21,9 @@ jobs:
 
       - name: Set up MinGW
         if: runner.os == 'Windows'
-        uses: egor-tensin/setup-mingw@v2
+        uses: egor-tensin/setup-mingw@v2.2.0
         with:
-          platform: x64
+          version: 12.2.0
 
       - name: Print
         run: "gcc --version"
