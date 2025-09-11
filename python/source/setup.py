@@ -13,7 +13,7 @@ cflags += ' -std=c99 -fPIC'
 # Removes unrecognized gcc option if present
 cflags = cflags.replace(' -fexceptionsrecord-gcc-switches', '')
 
-cc = sysconfig.get_config_var('CC') or ""
+cc = sysconfig.get_config_var('CC') or "gcc"
 
 class custom_build_ext(build_ext):
 	def build_extensions(self):
